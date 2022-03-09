@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link rel="stylesheet" href="www/css/cocktails.css">
+</head>
+
+                    <!-- MA VUE -->
+
+<body class="container-fluid">
+    <nav>
+        <!--LINKS FOR MODELS-->
+        <a href="index.php">Accueil</a>
+        <a href="ajout_cocktail.php">Ajouter un cocktail</a>
+        <a href="back_office.php">Back-office</a>
+        <h1>Mister Cocktail</h1>
+    </nav>
+
+    <main>
+        <!-- Display -->
+        <!--LOOP TO SHOW EACH COCKTAILS-->
+        <?php foreach($cocktails as $cocktail):?>
+        
+            <article class="card cocktail">
+                <!--LINK TO DETAIL PAGE-->
+                <a href="details_cocktail.php?id=<?= $cocktail['id']?>">
+                <!--IMAGE CARD-->
+                    <img class="card-img-top" src="www/images/cocktails/<?= $cocktail['urlPhoto'] ?>" alt="<?= $cocktail['description']?>">
+                </a>
+                <div class="card-body">
+                    <!--TITLE & DESCRIPTION-->
+                    <h4 class="card-title"> <?= $cocktail['nom']?></h4>
+                    <p class="card-text"><?= $cocktail['description']?></p>
+                </div>
+            </article>
+            <?php endforeach; ?>
+        
+    </main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link rel="stylesheet" href="www/css/cocktails.css">
+</head>
+<body class="container-fluid">
+
+    <nav>
+        <a href="index.php">Accueil</a>
+        <a href="ajout_cocktail.php">Ajouter un cocktail</a>
+        <a href="back_office.php">Back-office</a>
+        <h1>Mister Cocktail</h1>
+    </nav>
+
+    <h2>Edition d'un cocktail</h2>
+    <form action="edition_cocktail.php" method="POST">
+        <input type="hidden" name="id" value="<?= $cocktail['id'] ?>">
+        <div class="form-group col-4">
+            <label for="idFamille">Famille :</label>
+            <select class="form-control" id="idFamille" name="idFamille">
+
+            <!-- LOOP on FAMILLE TABLE DATAS-->
+                <?php foreach($famillesCocktails as $famille): ?>
+    <!--PRESELECTED VALUES-->
+                    <?php if($famille['id'] == $cocktail['idFamille']): ?>
+                        <option value="<?= $famille['id'] ?>" selected><?= $famille['nomFamille'] ?></option>
+                    <?php else: ?>
+                        <option value="<?= $famille['id'] ?>"><?= $famille['nomFamille'] ?></option>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="form-group col-8">
+            <label for="nom">Nom :</label>
+            <input type="text" class="form-control" id="nom" name="nom" maxlength="30" value="<?= $cocktail['nom'] ?>">
+        </div>
+        <div class="form-group col-12">
+            <label for="nom">Description :</label>
+            <textarea class="form-control" id="description" name="description"><?= $cocktail['description'] ?></textarea>
+        </div>
+        <div class="form-group col-3">
+            <label for="nom">Année conception :</label>
+            <input type="number" class="form-control" id="anneeConception" name="anneeConception" placeholder="1900" value="<?= $cocktail['anneeConception'] ?>">
+        </div>
+        <div class="form-group col-3">
+            <label for="nom">Prix moyen :</label>
+            <input type="text" class="form-control" id="prixMoyen" name="prixMoyen" value="<?= $cocktail['prixMoyen'] ?>">
+        </div>
+        <div class="form-group col-12">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+    </form>
+</body>
+</html>

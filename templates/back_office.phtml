@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link rel="stylesheet" href="www/css/cocktails.css">
+</head>
+<body class="container-fluid">
+    
+    <nav>
+        <a href="index.php">Accueil</a>
+        <a href="ajout_cocktail.php">Ajouter un cocktail</a>
+        <a href="back_office.php">Back-office</a>
+        <h1>Mister Cocktail</h1>
+    </nav>
+
+    <main>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--LOOP To get each cocktails INFOS-->
+                <?php foreach($cocktails as $cocktail): ?>
+                    <tr>
+                        <td><?= $cocktail['id'] ?></td>
+                        <td><?= $cocktail['nom'] ?></td>
+
+                        <!-- :!\ Faille XSS -->
+                        <td><?= htmlentities($cocktail['description']) ?></td>
+                        <!-- LINKS FOR UPDATE & DELETE Cocktail-->
+                        <td><a href="edition_cocktail.php?id=<?= $cocktail['id'] ?>">Edition</a></td>
+                        <td><a href="suppression_cocktail.php?id=<?= $cocktail['id'] ?>">Suppression</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </main>
+</body>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link rel="stylesheet" href="www/css/cocktails.css">
+</head>
+<body class="container-fluid">
+    <!--NAV-->
+    <nav>
+        <a href="index.php">Accueil</a>
+        <a href="ajout_cocktail.php">Ajouter un cocktail</a>
+        <a href="back_office.php">Back-office</a>
+        <h1>Mister Cocktail</h1>
+    </nav>
+
+    <!--ALL INFOS -->
+    <h2>Détails d'un cocktail</h2>
+    <ul>
+        <li>Nom : <?= $cocktail['nom'] ?></li>
+        <li>Famille : <?= $cocktail['nomFamille'] ?></li>
+        <li>Description : <?= $cocktail['description'] ?></li>
+        <li>Année conception : <?= $cocktail['anneeConception'] ?></li>
+        <li>Prix moyen : <?= $cocktail['prixMoyen'] ?> €</li>
+    </ul>
+    <ul>
+        <!-- Ingredients for the cocktail-->
+        <?php foreach($ingredientsCocktail as $ingredientCocktail): ?>
+            <li>Ingrédient : <?= $ingredientCocktail['nom'] ?> </li>
+        <?php endforeach; ?>
+    </ul>
+</body>
+</html>
